@@ -1,7 +1,13 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import LoginForm from '~/components/LoginForm';
+
+import * as S from './styles';
 
 export default function Login() {
-  return <h1>Login</h1>;
+  return (
+    <S.LoginWrapper>
+      <LoginForm />
+    </S.LoginWrapper>
+  );
 }

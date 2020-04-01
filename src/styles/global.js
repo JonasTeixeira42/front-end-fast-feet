@@ -1,58 +1,33 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyles = createGlobalStyle`
+export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
-  html, body, div, span, applet, object, iframe,
-  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-  a, abbr, acronym, address, big, cite, code,
-  del, dfn, em, img, ins, kbd, q, s, samp,
-  small, strike, strong, sub, sup, tt, var,
-  b, u, i, center,
-  dl, dt, dd, ol, ul, li,
-  fieldset, form, label, legend,
-  table, caption, tbody, tfoot, thead, tr, th, td,
-  article, aside, canvas, details, embed, 
-  figure, figcaption, footer, header, hgroup, 
-  menu, nav, output, ruby, section, summary,
-  time, mark, audio, video {
+  * {
     margin: 0;
     padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+    outline: 0;
+    box-sizing: border-box;
   }
-  /* HTML5 display-role reset for older browsers */
-  article, aside, details, figcaption, figure, 
-  footer, header, hgroup, menu, nav, section {
-    display: block;
+
+  *:focus {
+    outline: 0;
   }
+
+  html, body, #root {
+    height: 100%;
+  }
+
   body {
-    line-height: 1;
-    background: var(--background);
-    font-size: 100%;
-    font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  ol, ul {
-    list-style: none;
+
+  body, input, button {
+    font: 14px 'Roboto', sans-serif;
   }
-  blockquote, q {
-    quotes: none;
-  }
-  blockquote:before, blockquote:after,
-  q:before, q:after {
-    content: '';
-    content: none;
-  }
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-  
+
   a {
-    text-decoration: none
+    text-decoration: none;
   }
 
   ul {
@@ -61,28 +36,6 @@ const GlobalStyles = createGlobalStyle`
 
   button {
     cursor: pointer;
-  }
-
-  body.dark {
-    --borders: #38444d;
-    --texts: #8899a6;
-    --postColor: #fff;
-    --highlight: #1fa1f2;
-    --mediumBackground: #192734;
-    --background: #16202c;
-    --white: #fff;
-    --black: #222;
-  }
-
-  body.light {
-    --borders: #dedede;
-    --texts: #555;
-    --postColor: #111;
-    --highlight: #1fa1f2;
-    --mediumBackground: #f0f0f3;
-    --background: #fff;
-    --white: #fff;
-    --black: #222;
+    border: 0;
   }
 `;
-export default GlobalStyles;
