@@ -11,17 +11,25 @@ export const Wrapper = styled.div`
   border-radius: 4px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   padding: 60px 30px;
+
+  form {
+    margin-top: 40px;
+    width: 100%;
+
+    span {
+      color: #fb6f91;
+      align-self: flex-start;
+      margin: 0 0 10px;
+      font-weight: bold;
+      order: -1;
+    }
+  }
 `;
 
 export const Logo = styled.img`
   width: 100%;
   max-width: 259px;
   height: 44px;
-`;
-
-export const Form = styled.form`
-  margin-top: 40px;
-  width: 100%;
 `;
 
 export const InputWrapper = styled.div`
