@@ -1,11 +1,15 @@
 import React from 'react';
+import SearchAndRegister from '~/components/SearchAndRegister';
 
-// import { Container } from './styles';
+import * as S from './styles';
 
 export default function Deliveries() {
   return (
-    <div>
-      <h1>Deliveries</h1>
-    </div>
+    <S.Wrapper>
+      <SearchAndRegister
+        title="Gerenciando Encomendas"
+        placeholder="Buscar por encomendas"
+      />
+    </S.Wrapper>
   );
 }
