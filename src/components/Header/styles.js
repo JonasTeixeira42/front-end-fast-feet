@@ -11,7 +11,7 @@ export const Wrapper = styled.header`
 export const ItemsWrapper = styled.div``;
 
 export const MenuNavigationWrapper = styled.div`
-  margin: 19px 0;
+  padding: 19px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,4 +28,22 @@ export const LogoWrapper = styled.div`
 
 export const Logo = styled.img`
   width: 100%;
+`;
+
+export const LogoutWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: space-between;
+  padding-right: 30px;
+`;
+
+export const Admin = styled.span`
+  color: #666;
+  font-weight: bold;
+`;
+
+export const LogoutText = styled.span`
+  color: #de3b3b;
+  margin-top: 5px;
 `;

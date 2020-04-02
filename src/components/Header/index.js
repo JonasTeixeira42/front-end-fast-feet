@@ -19,7 +19,12 @@ export default function Header() {
           </S.MenuLinks>
         </S.MenuNavigationWrapper>
       </S.ItemsWrapper>
-      <S.ItemsWrapper>teste2</S.ItemsWrapper>
+      <S.ItemsWrapper>
+        <S.LogoutWrapper>
+          <S.Admin>Admin FastFeet</S.Admin>
+          <S.LogoutText>sair do sistema</S.LogoutText>
+        </S.LogoutWrapper>
+      </S.ItemsWrapper>
     </S.Wrapper>
   );
 }
