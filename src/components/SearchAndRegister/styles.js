@@ -36,7 +36,7 @@ export const InputHeader = styled.input`
   width: 100%;
   max-width: 237px;
   height: 40px;
-  background: #f5f5f5 url(${searchIcon}) no-repeat 16px center;
+  background: #fff url(${searchIcon}) no-repeat 16px center;
   padding: 10px 40px;
   border-radius: 4px;
   border: 1px solid #ddd;

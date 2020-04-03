@@ -1,7 +1,15 @@
 import React from 'react';
+import SearchAndRegister from '~/components/SearchAndRegister';
 
-// import { Container } from './styles';
+import * as S from './styles';
 
-export default function Couriers() {
-  return <h1>Couriers</h1>;
+export default function Deliveries() {
+  return (
+    <>
+      <SearchAndRegister
+        title="Gerenciando Entregadores"
+        placeholder="Buscar por entregadores"
+      />
+    </>
+  );
 }

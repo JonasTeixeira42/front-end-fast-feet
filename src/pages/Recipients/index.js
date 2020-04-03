@@ -1,7 +1,15 @@
 import React from 'react';
+import SearchAndRegister from '~/components/SearchAndRegister';
 
-// import { Container } from './styles';
+import * as S from './styles';
 
-export default function Recipients() {
-  return <h1>Destinatários</h1>;
+export default function Deliveries() {
+  return (
+    <>
+      <SearchAndRegister
+        title="Gerenciando Destinatários"
+        placeholder="Buscar por destinatários"
+      />
+    </>
+  );
 }

@@ -9,7 +9,7 @@ export default function DefaultLayout({ children }) {
   return (
     <S.Wrapper>
       <Header />
-      {children}
+      <S.Content>{children}</S.Content>
     </S.Wrapper>
   );
 }
