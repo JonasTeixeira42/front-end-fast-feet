@@ -1,4 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
+import TableOperations from '~/components/TableOperations';
 
 import * as S from './styles';
 
@@ -21,7 +23,9 @@ export default function Table() {
         <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
         <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
         <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
-        <S.BodyCell>Stonehenge</S.BodyCell>
+        <S.BodyCell>
+          <TableOperations />
+        </S.BodyCell>
       </S.TableRow>
       <S.TableRow>
         <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
@@ -30,16 +34,9 @@ export default function Table() {
         <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
         <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
         <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
-        <S.BodyCell>Stonehenge</S.BodyCell>
-      </S.TableRow>
-      <S.TableRow>
-        <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
-        <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
-        <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
-        <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
-        <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
-        <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
-        <S.BodyCell>Stonehenge</S.BodyCell>
+        <S.BodyCell>
+          <TableOperations />
+        </S.BodyCell>
       </S.TableRow>
     </S.TrableContainer>
   );

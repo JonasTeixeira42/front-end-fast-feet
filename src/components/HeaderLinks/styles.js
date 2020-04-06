@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { darken } from 'polished';
 
 export const LinksWrapper = styled.ul``;
 
@@ -16,6 +15,6 @@ export const MenuItem = styled(NavLink)`
   }
 
   &:hover {
-    color: ${darken(0.1, '#999')};
+    color: #444;
   }
 `;

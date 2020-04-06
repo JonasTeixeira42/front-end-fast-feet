@@ -25,7 +25,7 @@ export const HeaderCell = styled.div`
   font-weight: bold;
 
   &:last-of-type {
-    text-align: right;
+    text-align: center;
   }
 
   ${media.lessThan('medium')`
@@ -47,7 +47,11 @@ export const BodyCell = styled.div`
   border-radius: 4px;
 
   &:last-of-type {
-    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
   }
 
   ${media.lessThan('medium')`
