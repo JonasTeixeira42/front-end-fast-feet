@@ -1,11 +1,15 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
 import { DotsThreeHorizontal } from '@styled-icons/entypo/';
+import PropTypes from 'prop-types';
+
+import Icons from './icons';
 
 import * as S from './styles';
 
-export default function TableOperations() {
+export default function TableOperations({ operations }) {
   return (
     <>
       <DotsThreeHorizontal
@@ -18,12 +22,32 @@ export default function TableOperations() {
         place="bottom"
         type="light"
         effect="solid"
-        border="true"
+        border
         borderColor="#ddd"
         globalEventOff="click"
+        className="customeTheme"
       >
-        <p>teste</p>
+        {operations.map((operation) => {
+          const Icon = Icons[operation.operation];
+
+          return (
+            <S.OperationName key={operation.label}>
+              <S.IconWrapper>
+                <Icon size={operation.size} color={operation.color} />
+              </S.IconWrapper>
+              {operation.label}
+            </S.OperationName>
+          );
+        })}
       </ReactTooltip>
     </>
   );
 }
+
+TableOperations.propTypes = {
+  operations: PropTypes.array,
+};
+
+TableOperations.defaultProps = {
+  operations: [],
+};

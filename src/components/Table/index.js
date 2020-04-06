@@ -4,7 +4,7 @@ import TableOperations from '~/components/TableOperations';
 
 import * as S from './styles';
 
-export default function Table() {
+export default function Table({ children }) {
   return (
     <S.TrableContainer role="table">
       <S.TableRow role="rowgroup">
@@ -34,9 +34,7 @@ export default function Table() {
         <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
         <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
         <S.BodyCell>Stonehenge, Windsor and Bath with Pub Lunch</S.BodyCell>
-        <S.BodyCell>
-          <TableOperations />
-        </S.BodyCell>
+        <S.BodyCell>{children}</S.BodyCell>
       </S.TableRow>
     </S.TrableContainer>
   );

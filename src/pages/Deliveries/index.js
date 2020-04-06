@@ -1,8 +1,11 @@
 import React from 'react';
 import SearchAndRegister from '~/components/SearchAndRegister';
 import Table from '~/components/Table';
+import TableOperations from '~/components/TableOperations';
 
-import * as S from './styles';
+import content from './content';
+
+// import * as S from './styles';
 
 export default function Deliveries() {
   return (
@@ -11,7 +14,9 @@ export default function Deliveries() {
         title="Gerenciando Encomendas"
         placeholder="Buscar por encomendas"
       />
-      <Table />
+      <Table>
+        <TableOperations operations={content} />
+      </Table>
     </>
   );
 }

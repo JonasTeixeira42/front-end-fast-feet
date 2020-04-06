@@ -38,4 +38,9 @@ export default createGlobalStyle`
     cursor: pointer;
     border: 0;
   }
+
+  .customeTheme {
+    padding: 0;
+    border-radius: 5px;
+  }
 `;

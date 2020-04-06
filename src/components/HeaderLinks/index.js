@@ -8,7 +8,9 @@ export default function HeaderLinks() {
   return (
     <S.LinksWrapper>
       {links.map((link) => (
-        <S.MenuItem to={link.url}>{link.label}</S.MenuItem>
+        <S.MenuItem key={link.label} to={link.url}>
+          {link.label}
+        </S.MenuItem>
       ))}
     </S.LinksWrapper>
   );
