@@ -9,9 +9,9 @@ import Icons from './icons';
 
 import * as S from './styles';
 
-export default function TableOperations({ operations }) {
+export default function TableOperations({ operations, functions }) {
   return (
-    <>
+    <S.Wrapper>
       <DotsThreeHorizontal
         size="16"
         color="#C6C6C6"
@@ -19,19 +19,25 @@ export default function TableOperations({ operations }) {
         data-event="click"
       />
       <ReactTooltip
-        place="bottom"
+        // place="top"
         type="light"
         effect="solid"
         border
         borderColor="#ddd"
         globalEventOff="click"
         className="customeTheme"
+        clickable
       >
         {operations.map((operation) => {
           const Icon = Icons[operation.operation];
 
           return (
-            <S.OperationName key={operation.label}>
+            <S.OperationName
+              key={operation.label}
+              onClick={() =>
+                functions[operation.operation](operation.operation)
+              }
+            >
               <S.IconWrapper>
                 <Icon size={operation.size} color={operation.color} />
               </S.IconWrapper>
@@ -40,12 +46,13 @@ export default function TableOperations({ operations }) {
           );
         })}
       </ReactTooltip>
-    </>
+    </S.Wrapper>
   );
 }
 
 TableOperations.propTypes = {
   operations: PropTypes.array,
+  functions: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
 TableOperations.defaultProps = {

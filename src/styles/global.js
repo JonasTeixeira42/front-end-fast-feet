@@ -42,5 +42,6 @@ export default createGlobalStyle`
   .customeTheme {
     padding: 0;
     border-radius: 5px;
+    opacity: 1 !important;
   }
 `;
