@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchAndRegister from '~/components/SearchAndRegister';
 import Table from '~/components/Table';
 import TableOperations from '~/components/TableOperations';
@@ -8,6 +8,8 @@ import content from './content';
 // import * as S from './styles';
 
 export default function Deliveries() {
+  const [screen, setScreen] = useState('DEFAULT');
+
   const handleVisualizar = (retorno) => {
     return retorno;
   };
@@ -31,9 +33,12 @@ export default function Deliveries() {
         title="Gerenciando Encomendas"
         placeholder="Buscar por encomendas"
       />
-      <Table>
-        <TableOperations operations={content} functions={funcoes} />
-      </Table>
+      {screen === 'DEFAULT' && (
+        <Table>
+          <TableOperations operations={content} functions={funcoes} />
+        </Table>
+      )}
+      {screen === 'REGISTER' && <h1>EDICAO</h1>}
     </>
   );
 }

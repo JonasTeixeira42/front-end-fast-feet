@@ -5,7 +5,7 @@ import { Plus } from '@styled-icons/boxicons-regular/Plus';
 
 import * as S from './styles';
 
-export default function SearchAndRegister({ title, placeholder }) {
+export default function SearchAndRegister({ title, placeholder, label }) {
   return (
     <>
       <S.Header>
@@ -17,7 +17,7 @@ export default function SearchAndRegister({ title, placeholder }) {
           <S.IconWrapper>
             <Plus size="16" color="#fff" />
           </S.IconWrapper>
-          <S.ButtonText>CADASTRAR</S.ButtonText>
+          <S.ButtonText>{label}</S.ButtonText>
         </S.Button>
       </S.NavWrapper>
     </>
@@ -27,8 +27,10 @@ export default function SearchAndRegister({ title, placeholder }) {
 SearchAndRegister.propTypes = {
   title: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
+  label: PropTypes.string,
 };
 
 SearchAndRegister.defaultProps = {
   placeholder: 'Pesquisar...',
+  label: 'CADASTRAR',
 };
