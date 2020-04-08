@@ -46,4 +46,5 @@ export const Admin = styled.span`
 export const LogoutText = styled.span`
   color: #de3b3b;
   margin-top: 5px;
+  cursor: pointer;
 `;
