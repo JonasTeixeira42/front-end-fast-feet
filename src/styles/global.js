@@ -40,9 +40,7 @@ export default createGlobalStyle`
     border: 0;
   }
 
-  .customeTheme {
-    padding: 0;
-    border-radius: 5px;
-    opacity: 1 !important;
+  .select-input {
+    font-size: 16px; 
   }
 `;

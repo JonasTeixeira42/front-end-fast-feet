@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import SearchAndRegister from '~/components/SearchAndRegister';
+import RegisterDelivery from '~/components/RegisterDelivery';
 import TableDelivery from '~/components/TableDelivery';
 import DeliveryModal from '~/components/DeliveryModal';
 
@@ -21,7 +21,8 @@ export default function Deliveries() {
   };
 
   const handleEditar = (item) => {
-    setScreen('REGISTER');
+    setDelivery(item);
+    setScreen('EDIT');
   };
 
   const handleExcluir = (index) => {
@@ -41,11 +42,11 @@ export default function Deliveries() {
   };
   return (
     <>
-      <SearchAndRegister
+      <RegisterDelivery
         title="Gerenciando Encomendas"
-        placeholder="Buscar por encomendas"
         operation={screen}
         backFunction={() => setScreen('DEFAULT')}
+        registerFunction={() => setScreen('REGISTER')}
       />
       <DeliveryModal
         show={showModal}
@@ -55,7 +56,6 @@ export default function Deliveries() {
       {screen === 'DEFAULT' && (
         <TableDelivery operations={content} functions={funcoes} />
       )}
-      {screen === 'REGISTER' && <h1>EDICAO</h1>}
     </>
   );
 }

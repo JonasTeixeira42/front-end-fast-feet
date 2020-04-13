@@ -1,12 +1,12 @@
 import React from 'react';
-import SearchAndRegister from '~/components/SearchAndRegister';
+import RegisterDelivery from '~/components/RegisterDelivery';
 
 import * as S from './styles';
 
 export default function Deliveries() {
   return (
     <>
-      <SearchAndRegister
+      <RegisterDelivery
         title="Gerenciando Entregadores"
         placeholder="Buscar por entregadores"
       />
