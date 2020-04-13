@@ -1,10 +1,12 @@
+/* eslint-disable no-alert */
 import React, { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
 import SearchAndRegister from '~/components/SearchAndRegister';
 import TableDelivery from '~/components/TableDelivery';
 import DeliveryModal from '~/components/DeliveryModal';
 
 import content from './content';
+import { deleteDeliveryRequest } from '~/store/modules/deliveries/actions';
 
 import * as S from './styles';
 
@@ -12,6 +14,8 @@ export default function Deliveries() {
   const [screen, setScreen] = useState('DEFAULT');
   const [showModal, setShowModal] = useState(false);
   const [delivery, setDelivery] = useState({});
+
+  const dispatch = useDispatch();
 
   const handleVisualizar = (item) => {
     setDelivery(item);
@@ -22,8 +26,14 @@ export default function Deliveries() {
     console.log(retorno);
   };
 
-  const handleExcluir = (retorno) => {
-    console.log(retorno);
+  const handleExcluir = (index) => {
+    const confirmar = window.confirm(
+      `Você realmente quer excluir a encomenda ${index}`
+    );
+
+    if (confirmar) {
+      dispatch(deleteDeliveryRequest(index));
+    }
   };
 
   const funcoes = {

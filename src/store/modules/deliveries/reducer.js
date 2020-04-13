@@ -16,6 +16,11 @@ export default function deliveries(state = INITIAL_STATE, action) {
         draft[index].enabled = !draft[index].enabled;
         break;
       }
+      case '@deliveries/DELETE_DELIVERY_SUCCESS': {
+        const { index } = action.payload;
+        draft[index].status = 'CANCELADA';
+        break;
+      }
       default:
     }
   });
