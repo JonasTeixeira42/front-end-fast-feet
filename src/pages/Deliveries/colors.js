@@ -1,6 +1,0 @@
-export default {
-  PENDENTE: '#C1BC35',
-  RETIRADA: '#4D85EE',
-  CANCELADA: '#DE3B3B',
-  ENTREGUE: '#2CA42B',
-};

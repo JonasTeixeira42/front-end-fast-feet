@@ -12,3 +12,12 @@ export function fetchDeliveriesSuccess(deliveries) {
     },
   };
 }
+
+export function changeEnabledField(index) {
+  return {
+    type: '@deliveries/CHANGE_ENABLE_FIELD',
+    payload: {
+      index,
+    },
+  };
+}

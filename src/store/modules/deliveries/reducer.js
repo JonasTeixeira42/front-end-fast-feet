@@ -7,8 +7,13 @@ export default function deliveries(state = INITIAL_STATE, action) {
     switch (action.type) {
       case '@deliveries/FETCH_DELIVERIES_SUCCESS': {
         action.payload.deliveries.forEach((item) => {
-          draft[item.id] = item;
+          draft[item.id] = { ...item, enabled: false };
         });
+        break;
+      }
+      case '@deliveries/CHANGE_ENABLE_FIELD': {
+        const { index } = action.payload;
+        draft[index].enabled = !draft[index].enabled;
         break;
       }
       default:

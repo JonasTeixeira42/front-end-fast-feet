@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 import { darken } from 'polished';
 
-// export const Wrapper = styled.div``;
-
 export const TrableContainer = styled.div`
   display: block;
   margin: 22px auto;
@@ -95,6 +93,10 @@ export const Wrapper = styled.div`
   padding: 5px;
   position: relative;
 
+  svg {
+    cursor: pointer;
+  }
+
   &::before {
     background-color: #fff;
     border-top: 1px solid #00000026;
@@ -117,7 +119,7 @@ export const PopOver = styled.div`
   background-color: #fff;
   border-radius: 6px;
   border: 1px solid #00000026;
-  display: block;
+  display: ${(props) => (props.teste ? 'block' : 'none')};
   padding: 10px 15px;
   position: absolute;
   text-align: center;
