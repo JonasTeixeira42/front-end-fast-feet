@@ -8,8 +8,6 @@ import DeliveryModal from '~/components/DeliveryModal';
 import content from './content';
 import { deleteDeliveryRequest } from '~/store/modules/deliveries/actions';
 
-import * as S from './styles';
-
 export default function Deliveries() {
   const [screen, setScreen] = useState('DEFAULT');
   const [showModal, setShowModal] = useState(false);
@@ -22,8 +20,8 @@ export default function Deliveries() {
     setShowModal(true);
   };
 
-  const handleEditar = (retorno) => {
-    console.log(retorno);
+  const handleEditar = (item) => {
+    setScreen('REGISTER');
   };
 
   const handleExcluir = (index) => {
@@ -46,6 +44,8 @@ export default function Deliveries() {
       <SearchAndRegister
         title="Gerenciando Encomendas"
         placeholder="Buscar por encomendas"
+        operation={screen}
+        backFunction={() => setScreen('DEFAULT')}
       />
       <DeliveryModal
         show={showModal}

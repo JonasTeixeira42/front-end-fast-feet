@@ -19,16 +19,18 @@ export const NavWrapper = styled.article`
 `;
 
 export const Button = styled.button`
-  background: #7d40e7;
+  background: ${(props) => (props.color ? props.color : '#7d40e7')};
   display: flex;
   align-items: center;
-  justify-content: baseline;
+  justify-content: center;
   padding: 9px 16px;
   border-radius: 4px;
   transition: background 0.2s;
+  margin-left: 16px;
 
   &:hover {
-    background: ${darken(0.05, '#7d40e7')};
+    background: ${(props) =>
+      props.color ? darken(0.05, props.color) : darken(0.05, '#7d40e7')};
   }
 `;
 
@@ -55,10 +57,14 @@ export const InputHeader = styled.input`
 export const IconWrapper = styled.div`
   display: flex;
   align-items: baseline;
-  margin-right: 7px;
+  margin-right: 6px;
 `;
 
 export const ButtonText = styled.span`
   color: #fff;
   font-weight: bold;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
 `;
