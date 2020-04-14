@@ -50,3 +50,15 @@ export function createDeliveryRequest(courier, recipient, product) {
     },
   };
 }
+
+export function editDeliveryRequest(courier, recipient, product, id) {
+  return {
+    type: '@deliveries/EDIT_DELIVERY_REQUEST',
+    payload: {
+      courier,
+      recipient,
+      product,
+      id,
+    },
+  };
+}

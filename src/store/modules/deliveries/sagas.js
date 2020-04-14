@@ -45,8 +45,29 @@ export function* createDelivery({ payload }) {
   }
 }
 
+export function* editDelivery({ payload }) {
+  const { courier, recipient, product, id } = payload;
+
+  const delivery = {
+    deliveryman_id: courier || undefined,
+    recipient_id: recipient || undefined,
+    product,
+  };
+
+  try {
+    yield call(api.put, `delivery/${id}`, delivery);
+
+    fetchDeliveries();
+
+    toast.success('Encomenda editada com sucesso');
+  } catch (error) {
+    toast.error(error.response.data.error);
+  }
+}
+
 export default all([
   takeLatest('@deliveries/FETCH_DELIVERIES_REQUEST', fetchDeliveries),
   takeLatest('@deliveries/DELETE_DELIVERY_REQUEST', deleteDelivery),
   takeLatest('@deliveries/CREATE_DELIVERY_REQUEST', createDelivery),
+  takeLatest('@deliveries/EDIT_DELIVERY_REQUEST', editDelivery),
 ]);

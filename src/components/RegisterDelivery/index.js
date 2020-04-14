@@ -6,20 +6,25 @@ import { Plus } from '@styled-icons/boxicons-regular/Plus';
 import { Check } from '@styled-icons/heroicons-outline/Check';
 import { KeyboardArrowLeft as ArrowLeft } from '@styled-icons/material/KeyboardArrowLeft';
 import { toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import * as S from './styles';
 
 import api from '~/services/api';
-import { createDeliveryRequest } from '~/store/modules/deliveries/actions';
+import {
+  createDeliveryRequest,
+  editDeliveryRequest,
+} from '~/store/modules/deliveries/actions';
 
 export default function RegisterDelivery({
   title,
   operation,
   backFunction,
   registerFunction,
+  deliveryIndex,
 }) {
   const dispatch = useDispatch();
+  const deliveries = useSelector((state) => state.deliveries);
   const [couriers, setCouriers] = useState([]);
   const [recipients, setRecipients] = useState([]);
 
@@ -28,7 +33,7 @@ export default function RegisterDelivery({
   const [product, setProduct] = useState('');
 
   useEffect(() => {
-    const teste = async () => {
+    const loadCouriersRecipients = async () => {
       const [courierResponse, recipientResponse] = await Promise.all([
         api.get('courier'),
         api.get('recipient'),
@@ -38,11 +43,11 @@ export default function RegisterDelivery({
       setRecipients(recipientResponse.data);
     };
 
-    teste();
+    loadCouriersRecipients();
   }, []);
 
   const submitHandler = () => {
-    if (operation === 'REGISTER') {
+    if (operation !== 'EDIT') {
       if (!courier) {
         toast.error('Selecione um entregador');
         return;
@@ -57,12 +62,18 @@ export default function RegisterDelivery({
         toast.error('Digite o nome do produto');
         return;
       }
-
-      dispatch(createDeliveryRequest(courier, recipient, product));
-      return;
     }
 
-    console.log('olaaaaaa');
+    dispatch(
+      operation === 'REGISTER'
+        ? createDeliveryRequest(courier, recipient, product)
+        : editDeliveryRequest(
+            courier,
+            recipient,
+            product,
+            deliveries[deliveryIndex].id
+          )
+    );
   };
 
   return (
@@ -146,8 +157,10 @@ RegisterDelivery.propTypes = {
   operation: PropTypes.string,
   backFunction: PropTypes.func.isRequired,
   registerFunction: PropTypes.func.isRequired,
+  deliveryIndex: PropTypes.number,
 };
 
 RegisterDelivery.defaultProps = {
   operation: 'DEFAULT',
+  deliveryIndex: null,
 };

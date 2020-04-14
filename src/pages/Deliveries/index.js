@@ -11,7 +11,7 @@ import { deleteDeliveryRequest } from '~/store/modules/deliveries/actions';
 export default function Deliveries() {
   const [screen, setScreen] = useState('DEFAULT');
   const [showModal, setShowModal] = useState(false);
-  const [delivery, setDelivery] = useState({});
+  const [delivery, setDelivery] = useState(0);
 
   const dispatch = useDispatch();
 
@@ -47,11 +47,12 @@ export default function Deliveries() {
         operation={screen}
         backFunction={() => setScreen('DEFAULT')}
         registerFunction={() => setScreen('REGISTER')}
+        deliveryIndex={delivery}
       />
       <DeliveryModal
         show={showModal}
         closeModal={() => setShowModal(false)}
-        delivery={delivery}
+        index={delivery}
       />
       {screen === 'DEFAULT' && (
         <TableDelivery operations={content} functions={funcoes} />
