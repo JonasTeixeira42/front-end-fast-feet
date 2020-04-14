@@ -39,3 +39,14 @@ export function deleteDeliverySuccess(index) {
     },
   };
 }
+
+export function createDeliveryRequest(courier, recipient, product) {
+  return {
+    type: '@deliveries/CREATE_DELIVERY_REQUEST',
+    payload: {
+      courier,
+      recipient,
+      product,
+    },
+  };
+}

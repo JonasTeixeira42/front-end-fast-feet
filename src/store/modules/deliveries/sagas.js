@@ -27,7 +27,26 @@ export function* deleteDelivery({ payload }) {
   }
 }
 
+export function* createDelivery({ payload }) {
+  const { courier, recipient, product } = payload;
+
+  try {
+    yield call(api.post, 'delivery', {
+      recipient_id: recipient,
+      deliveryman_id: courier,
+      product,
+    });
+
+    fetchDeliveries();
+
+    toast.success('Encomenda cadastrada com sucesso');
+  } catch (error) {
+    toast.error(error.response.data.error);
+  }
+}
+
 export default all([
   takeLatest('@deliveries/FETCH_DELIVERIES_REQUEST', fetchDeliveries),
   takeLatest('@deliveries/DELETE_DELIVERY_REQUEST', deleteDelivery),
+  takeLatest('@deliveries/CREATE_DELIVERY_REQUEST', createDelivery),
 ]);
