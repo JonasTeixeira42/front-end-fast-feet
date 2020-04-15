@@ -20,7 +20,7 @@ export const TableRow = styled.div`
 `;
 
 export const HeaderCell = styled.div`
-  width: calc(100% / 7);
+  width: ${(props) => props.length};
   text-align: left;
   padding: 18px 25px;
   color: #444444;
@@ -29,6 +29,7 @@ export const HeaderCell = styled.div`
 
   &:last-of-type {
     text-align: center;
+    width: 14%;
   }
 
   ${media.lessThan('medium')`
@@ -42,7 +43,7 @@ export const HeaderCell = styled.div`
 `;
 
 export const BodyCell = styled.div`
-  width: calc(100% / 7);
+  width: ${(props) => props.length};
   text-align: left;
   padding: 18px 25px;
   color: #666;
@@ -57,6 +58,7 @@ export const BodyCell = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 0 4px 4px 0;
+    width: 14%;
   }
 
   ${media.lessThan('medium')`
@@ -124,8 +126,10 @@ export const PopOver = styled.div`
   position: absolute;
   text-align: center;
   z-index: 999;
-  right: -60px;
-  bottom: -110px;
+  right: ${(props) => (props.right ? props.right : '-60px')};
+  bottom: ${(props) => (props.bottom ? props.bottom : '-110px')};
+  min-width: ${(props) =>
+    props.popoverLength ? props.popoverLength : '115px'};
 `;
 
 export const OperationName = styled.div`

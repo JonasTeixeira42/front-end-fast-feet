@@ -5,23 +5,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DotsThreeHorizontal } from '@styled-icons/entypo/';
 import PropTypes from 'prop-types';
 
-import * as S from '~/components/TableStyles';
-
 import {
-  fetchDeliveriesRequest,
+  fetchProblemsDeliveriesRequest,
   changeEnabledField,
-} from '~/store/modules/deliveries/actions';
+} from '~/store/modules/problems/actions';
 
-import colorStatus from './colors';
 import Icons from '~/utils/icons';
 import headers from './headers';
 
-export default function TableDelivery({ operations, functions }) {
-  const deliveries = useSelector((state) => state.deliveries);
+import * as S from '~/components/TableStyles';
+
+export default function TableProblems({ operations, functions }) {
+  const problems = useSelector((state) => state.problems);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchDeliveriesRequest());
+    dispatch(fetchProblemsDeliveriesRequest());
   }, []);
 
   const changeEnabled = (index) => {
@@ -31,28 +30,25 @@ export default function TableDelivery({ operations, functions }) {
   return (
     <S.TrableContainer role="table">
       <S.TableRow role="rowgroup">
-        {headers.map((header) => (
-          <S.HeaderCell length="14%" key={header} role="columnheader">
-            {header}
-          </S.HeaderCell>
-        ))}
+        {headers.map((header, id) =>
+          id === 1 ? (
+            <S.HeaderCell length="66%" key={header} role="columnheader">
+              {header}
+            </S.HeaderCell>
+          ) : (
+            <S.HeaderCell length="20%" key={header} role="columnheader">
+              {header}
+            </S.HeaderCell>
+          )
+        )}
         <S.HeaderCell role="columnheader">Ações</S.HeaderCell>
       </S.TableRow>
-      {Object.entries(deliveries).map(([key, value]) => (
+      {Object.entries(problems).map(([key, value]) => (
         <S.TableRow key={key}>
-          <S.BodyCell length="14%">{`#${value.id < 10 ? 0 : ''}${
-            value.id
+          <S.BodyCell length="20%">{`#${value.delivery.id < 10 ? 0 : ''}${
+            value.delivery.id
           }`}</S.BodyCell>
-          <S.BodyCell length="14%">{value.recipient.name}</S.BodyCell>
-          <S.BodyCell length="14%">{value.courier.name}</S.BodyCell>
-          <S.BodyCell length="14%">{value.recipient.cidade}</S.BodyCell>
-          <S.BodyCell length="14%">{value.recipient.estado}</S.BodyCell>
-          <S.BodyCell length="14%">
-            <S.StatusWrapper color={colorStatus[value.status]}>
-              <S.Circle color={colorStatus[value.status]} />
-              {value.status}
-            </S.StatusWrapper>
-          </S.BodyCell>
+          <S.BodyCell length="66%">{value.description}</S.BodyCell>
           <S.BodyCell length="14%">
             <S.Wrapper teste={value.enabled}>
               <DotsThreeHorizontal
@@ -60,7 +56,12 @@ export default function TableDelivery({ operations, functions }) {
                 color="#C6C6C6"
                 onClick={() => changeEnabled(value.id)}
               />
-              <S.PopOver teste={value.enabled}>
+              <S.PopOver
+                popoverLength="225px"
+                teste={value.enabled}
+                right="-95px"
+                bottom="-80px"
+              >
                 {operations.map((operation) => {
                   const Icon = Icons[operation.operation];
                   return (
@@ -84,7 +85,7 @@ export default function TableDelivery({ operations, functions }) {
   );
 }
 
-TableDelivery.propTypes = {
+TableProblems.propTypes = {
   operations: PropTypes.array.isRequired,
   functions: PropTypes.object.isRequired,
 };
