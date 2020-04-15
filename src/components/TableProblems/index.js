@@ -48,7 +48,9 @@ export default function TableProblems({ operations, functions }) {
           <S.BodyCell length="20%">{`#${value.delivery.id < 10 ? 0 : ''}${
             value.delivery.id
           }`}</S.BodyCell>
-          <S.BodyCell length="66%">{value.description}</S.BodyCell>
+          <S.BodyCell overFlow length="66%">
+            {value.description}
+          </S.BodyCell>
           <S.BodyCell length="14%">
             <S.Wrapper teste={value.enabled}>
               <DotsThreeHorizontal

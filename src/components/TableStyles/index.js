@@ -48,6 +48,9 @@ export const BodyCell = styled.div`
   padding: 18px 25px;
   color: #666;
   background: #fff;
+  ${(props) => (props.overFlow ? 'overflow: hidden;' : null)}
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   &:first-of-type {
     border-radius: 4px 0 0 4px;
