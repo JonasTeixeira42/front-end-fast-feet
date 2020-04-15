@@ -31,7 +31,12 @@ export default function Deliveries() {
 
   return (
     <>
-      <RecipientForm />
+      <RecipientForm
+        operation={screen}
+        backFunction={() => setScreen('DEFAULT')}
+        registerFunction={() => setScreen('REGISTER')}
+        recipientIndex={recipient}
+      />
       {screen === 'DEFAULT' && (
         <TableRecipients operations={content} functions={funcoes} />
       )}

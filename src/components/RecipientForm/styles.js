@@ -5,6 +5,18 @@ import searchIcon from '~/assets/searchIcon.svg';
 
 export const Wrapper = styled.section`
   width: 100%;
+
+  form {
+    width: 100%;
+
+    span {
+      color: #fb6f91;
+      align-self: flex-start;
+      margin: 0 0 10px;
+      font-weight: bold;
+      order: -1;
+    }
+  }
 `;
 export const Header = styled.header`
   width: 100%;
@@ -16,7 +28,7 @@ export const Title = styled.h2`
 export const Form = styled.form`
   width: 100%;
 `;
-export const ButtonWrapper = styled.div`
+export const NavWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -60,4 +72,48 @@ export const Input = styled.input`
   &:focus {
     border-color: #999;
   }
+`;
+export const ButtonWrapper = styled.div`
+  display: flex;
+`;
+export const InputForm = styled.div`
+  width: 100;
+  background: #fff;
+  margin-top: 20px;
+  padding: 26px 16px 26px 30px;
+  border-radius: 4px;
+`;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: ${(props) => (props.width ? props.width : '100%')};
+
+  input {
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    margin-right: 14px;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+      font-size: 16px;
+      color: #999;
+    }
+
+    &:focus {
+      border-color: #999;
+    }
+  }
+
+  label {
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 9px;
+  }
+`;
+
+export const Row = styled.div`
+  display: flex;
 `;
