@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import TableProblems from '~/components/TableProblems';
+import DeliveryProblemModal from '~/components/DeliveryProblemModal';
 
 import content from './content';
 import { deleteDeliveryRequest } from '~/store/modules/deliveries/actions';
@@ -10,12 +11,12 @@ import * as S from './styles';
 
 export default function Problems() {
   const [showModal, setShowModal] = useState(false);
-  const [delivery, setDelivery] = useState(0);
+  const [problem, setProblem] = useState(0);
 
   const dispatch = useDispatch();
 
   const handleVisualizar = (item) => {
-    setDelivery(item);
+    setProblem(item);
     setShowModal(true);
   };
 
@@ -37,6 +38,11 @@ export default function Problems() {
   return (
     <S.Wrapper>
       <S.Header>Problemas na entrega</S.Header>
+      <DeliveryProblemModal
+        show={showModal}
+        closeModal={() => setShowModal(false)}
+        index={problem}
+      />
       <TableProblems operations={content} functions={funcoes} />
     </S.Wrapper>
   );
