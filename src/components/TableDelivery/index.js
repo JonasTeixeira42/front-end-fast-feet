@@ -32,7 +32,7 @@ export default function TableDelivery({ operations, functions }) {
     <S.TrableContainer role="table">
       <S.TableRow role="rowgroup">
         {headers.map((header) => (
-          <S.HeaderCell length="14%" key={header} role="columnheader">
+          <S.HeaderCell length="14.28%" key={header} role="columnheader">
             {header}
           </S.HeaderCell>
         ))}
@@ -40,20 +40,20 @@ export default function TableDelivery({ operations, functions }) {
       </S.TableRow>
       {Object.entries(deliveries).map(([key, value]) => (
         <S.TableRow key={key}>
-          <S.BodyCell length="14%">{`#${value.id < 10 ? 0 : ''}${
+          <S.BodyCell length="14.27%">{`#${value.id < 10 ? 0 : ''}${
             value.id
           }`}</S.BodyCell>
-          <S.BodyCell length="14%">{value.recipient.name}</S.BodyCell>
-          <S.BodyCell length="14%">{value.courier.name}</S.BodyCell>
-          <S.BodyCell length="14%">{value.recipient.cidade}</S.BodyCell>
-          <S.BodyCell length="14%">{value.recipient.estado}</S.BodyCell>
-          <S.BodyCell length="14%">
+          <S.BodyCell length="14.27%">{value.recipient.name}</S.BodyCell>
+          <S.BodyCell length="14.27%">{value.courier.name}</S.BodyCell>
+          <S.BodyCell length="14.27%">{value.recipient.cidade}</S.BodyCell>
+          <S.BodyCell length="14.27%">{value.recipient.estado}</S.BodyCell>
+          <S.BodyCell length="14.27%">
             <S.StatusWrapper color={colorStatus[value.status]}>
               <S.Circle color={colorStatus[value.status]} />
               {value.status}
             </S.StatusWrapper>
           </S.BodyCell>
-          <S.BodyCell length="14%">
+          <S.BodyCell length="14.27%">
             <S.Wrapper teste={value.enabled}>
               <DotsThreeHorizontal
                 size="16"

@@ -38,6 +38,7 @@ export const HeaderCell = styled.div`
 
     &:last-of-type {
       text-align: center;
+      width: 100%
     }
   `}
 `;
@@ -72,6 +73,7 @@ export const BodyCell = styled.div`
       text-align: center;
       border-radius: 4px 4px 0 0;
       border-bottom: 15px solid #f5f5f5;
+      width: 100%;
     }
   `}
 `;

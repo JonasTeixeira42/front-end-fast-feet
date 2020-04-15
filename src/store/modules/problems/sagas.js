@@ -19,8 +19,6 @@ export function* deleteDelivery({ payload }) {
   try {
     const response = yield call(api.delete, `delivery/${index}`);
 
-    fetchProblemDeliveries();
-
     toast.success(`Encomenda ${response.data.id} cancelada com sucesso`);
   } catch (error) {
     toast.error(error.response.data.error);
