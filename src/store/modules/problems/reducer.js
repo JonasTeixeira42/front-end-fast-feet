@@ -2,7 +2,7 @@ import produce from 'immer';
 
 const INITIAL_STATE = {};
 
-export default function deliveries(state = INITIAL_STATE, action) {
+export default function problems(state = INITIAL_STATE, action) {
   return produce(state, (draft) => {
     switch (action.type) {
       case '@problems/FETCH_PROBLEMS_DELIVERIES_SUCCESS': {

@@ -13,7 +13,7 @@ export function fetchRecipientsSuccess(recipients) {
 
 export function changeEnabledField(index) {
   return {
-    type: '@problems/CHANGE_ENABLE_FIELD',
+    type: '@recipients/CHANGE_ENABLE_FIELD',
     payload: {
       index,
     },
