@@ -5,7 +5,7 @@ import TableProblems from '~/components/TableProblems';
 import DeliveryProblemModal from '~/components/DeliveryProblemModal';
 
 import content from './content';
-import { deleteDeliveryRequest } from '~/store/modules/deliveries/actions';
+import { deleteDeliveryRequest } from '~/store/modules/problems/actions';
 
 import * as S from './styles';
 
@@ -20,13 +20,13 @@ export default function Problems() {
     setShowModal(true);
   };
 
-  const handleExcluir = (index) => {
+  const handleExcluir = (index, deliveryIndex) => {
     const confirmar = window.confirm(
       `Você realmente quer cancelar a encomenda ${index}`
     );
 
     if (confirmar) {
-      dispatch(deleteDeliveryRequest(index));
+      dispatch(deleteDeliveryRequest(deliveryIndex));
     }
   };
 

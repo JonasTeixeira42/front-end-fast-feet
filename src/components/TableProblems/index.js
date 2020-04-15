@@ -69,7 +69,12 @@ export default function TableProblems({ operations, functions }) {
                   return (
                     <S.OperationName
                       key={operation.label}
-                      onClick={() => functions[operation.operation](value.id)}
+                      onClick={() =>
+                        functions[operation.operation](
+                          value.id,
+                          value.delivery.id
+                        )
+                      }
                     >
                       <S.IconWrapper>
                         <Icon size={operation.size} color={operation.color} />

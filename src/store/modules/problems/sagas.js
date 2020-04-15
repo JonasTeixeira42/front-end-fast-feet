@@ -32,5 +32,5 @@ export default all([
     '@problems/FETCH_PROBLEMS_DELIVERIES_REQUEST',
     fetchProblemDeliveries
   ),
-  takeLatest('@deliveries/DELETE_DELIVERY_REQUEST', deleteDelivery),
+  takeLatest('@problems/DELETE_DELIVERY_REQUEST', deleteDelivery),
 ]);

@@ -21,3 +21,12 @@ export function changeEnabledField(index) {
     },
   };
 }
+
+export function deleteDeliveryRequest(index) {
+  return {
+    type: '@problems/DELETE_DELIVERY_REQUEST',
+    payload: {
+      index,
+    },
+  };
+}
