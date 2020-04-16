@@ -19,3 +19,26 @@ export function changeEnabledField(index) {
     },
   };
 }
+
+export function createRecipientRequest(data) {
+  return {
+    type: '@recipients/CREATE_RECIPIENT_REQUEST',
+    payload: { data },
+  };
+}
+
+export function editRecipientRequest(data) {
+  return {
+    type: '@recipients/EDIT_RECIPIENT_REQUEST',
+    payload: { data },
+  };
+}
+
+export function deleteRecipientRequest(index) {
+  return {
+    type: '@recipients/DELETE_RECIPIENT_REQUEST',
+    payload: {
+      index,
+    },
+  };
+}

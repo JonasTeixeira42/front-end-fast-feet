@@ -106,6 +106,7 @@ export const Input = styled.input`
   border: 1px solid #ccc;
   padding: 8px;
   margin-top: 9px;
+  color: #999;
 
   &::placeholder {
     font-size: 16px;

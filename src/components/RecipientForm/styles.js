@@ -14,7 +14,6 @@ export const Wrapper = styled.section`
       align-self: flex-start;
       margin: 0 0 10px;
       font-weight: bold;
-      order: -1;
     }
   }
 `;
@@ -96,6 +95,7 @@ export const InputWrapper = styled.div`
     margin-bottom: 15px;
     margin-right: 14px;
     transition: border-color 0.2s;
+    color: #999999;
 
     &::placeholder {
       font-size: 16px;

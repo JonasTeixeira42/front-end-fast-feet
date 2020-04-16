@@ -11,3 +11,9 @@ export const cepFormatter = (cep) => {
 };
 
 export const dataFormatter = (date) => format(parseISO(date), 'd/MM/yyyy');
+
+export const cepMask = (value) =>
+  value
+    .replace(/\D/g, '')
+    .replace(/(\d{5})(\d)/, '$1-$2')
+    .replace(/(-\d{3})\d+?$/, '$1');

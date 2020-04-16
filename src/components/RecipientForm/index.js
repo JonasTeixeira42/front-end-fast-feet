@@ -1,12 +1,36 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import { Plus } from '@styled-icons/boxicons-regular/Plus';
 import { Check } from '@styled-icons/heroicons-outline/Check';
 import { KeyboardArrowLeft as ArrowLeft } from '@styled-icons/material/KeyboardArrowLeft';
 import { Input, Form } from '@rocketseat/unform';
 
+import { cepMask } from '~/utils/format';
+import {
+  createRecipientRequest,
+  editRecipientRequest,
+} from '~/store/modules/recipients/actions';
+
 import * as S from './styles';
+
+const schema = Yup.object().shape({
+  name: Yup.string().required('Name is required'),
+  rua: Yup.string().required('Rua is required'),
+  numero: Yup.number()
+    .typeError('Numebro must be a number')
+    .positive('Numero must be positive')
+    .integer('Numero must be an integer')
+    .required('Age is required'),
+  complemento: Yup.string(),
+  estado: Yup.string()
+    .required('Estado is required')
+    .max(2, 'Maximum character numer is 2'),
+  cidade: Yup.string().required('Cidade is required'),
+  cep: Yup.string().required('CEP is required').min(9, 'CEP inválido'),
+});
 
 export default function RecipientForm({
   operation,
@@ -14,16 +38,20 @@ export default function RecipientForm({
   registerFunction,
   recipientIndex,
 }) {
-  const [cep, setCep] = useState('');
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [cepState, setCep] = useState('');
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (data) => {
+    dispatch(
+      operation === 'REGISTER'
+        ? createRecipientRequest(data)
+        : editRecipientRequest({ ...data, id: recipientIndex })
+    );
   };
 
-  const cepMask = (e) => {
-    const value = e.target.value
-      .replace(/\D/g, '')
-      .replace(/(\d{5})(\d)/, '$1-$2')
-      .replace(/(-\d{3})\d+?$/, '$1');
+  const handleCepChange = (e) => {
+    const value = cepMask(e.target.value);
     setCep(value);
   };
 
@@ -32,7 +60,10 @@ export default function RecipientForm({
       <S.Header>
         <S.Title>Gerenciando destinatários</S.Title>
       </S.Header>
-      <Form onSubmit={handleSubmit}>
+      <Form
+        schema={operation === 'REGISTER' ? schema : undefined}
+        onSubmit={handleSubmit}
+      >
         <S.NavWrapper>
           <S.Input placeholder="Buscar por destinatários" />
           <S.ButtonWrapper>
@@ -59,43 +90,45 @@ export default function RecipientForm({
             )}
           </S.ButtonWrapper>
         </S.NavWrapper>
-        <S.InputForm>
-          <S.InputWrapper>
-            <Input name="name" placeholder="Nome" label="Nome" />
-          </S.InputWrapper>
-          <S.Row>
-            <S.InputWrapper width="70%">
-              <Input name="rua" placeholder="Rua" label="Rua" />
+        {operation !== 'DEFAULT' && (
+          <S.InputForm>
+            <S.InputWrapper>
+              <Input name="name" placeholder="Nome" label="Nome" />
             </S.InputWrapper>
-            <S.InputWrapper width="15%">
-              <Input name="numero" placeholder="Número" label="Número" />
-            </S.InputWrapper>
-            <S.InputWrapper width="15%">
-              <Input
-                name="complemento"
-                placeholder="Complemento"
-                label="Complemento"
-              />
-            </S.InputWrapper>
-          </S.Row>
-          <S.Row>
-            <S.InputWrapper width="34%">
-              <Input name="cidade" placeholder="Cidade" label="cidade" />
-            </S.InputWrapper>
-            <S.InputWrapper width="33%">
-              <Input name="estado" placeholder="Estado" label="Estado" />
-            </S.InputWrapper>
-            <S.InputWrapper width="33%">
-              <Input
-                name="cep"
-                placeholder="CEP"
-                label="CEP"
-                value={cep}
-                onChange={cepMask}
-              />
-            </S.InputWrapper>
-          </S.Row>
-        </S.InputForm>
+            <S.Row>
+              <S.InputWrapper width="70%">
+                <Input name="rua" placeholder="Rua" label="Rua" />
+              </S.InputWrapper>
+              <S.InputWrapper width="15%">
+                <Input name="numero" placeholder="Número" label="Número" />
+              </S.InputWrapper>
+              <S.InputWrapper width="15%">
+                <Input
+                  name="complemento"
+                  placeholder="Complemento"
+                  label="Complemento"
+                />
+              </S.InputWrapper>
+            </S.Row>
+            <S.Row>
+              <S.InputWrapper width="34%">
+                <Input name="cidade" placeholder="Cidade" label="cidade" />
+              </S.InputWrapper>
+              <S.InputWrapper width="33%">
+                <Input name="estado" placeholder="Estado" label="Estado" />
+              </S.InputWrapper>
+              <S.InputWrapper width="33%">
+                <Input
+                  name="cep"
+                  placeholder="CEP"
+                  label="CEP"
+                  value={cepState}
+                  onChange={handleCepChange}
+                />
+              </S.InputWrapper>
+            </S.Row>
+          </S.InputForm>
+        )}
       </Form>
     </S.Wrapper>
   );
