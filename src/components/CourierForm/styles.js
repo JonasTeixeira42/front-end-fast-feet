@@ -76,6 +76,8 @@ export const ButtonWrapper = styled.div`
   display: flex;
 `;
 export const InputForm = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100;
   background: #fff;
   margin-top: 20px;

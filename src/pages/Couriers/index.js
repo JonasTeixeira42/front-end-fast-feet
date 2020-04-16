@@ -4,16 +4,16 @@ import { useDispatch } from 'react-redux';
 import CourierForm from '~/components/CourierForm';
 import TableCouriers from '~/components/TableCouriers';
 
-import { deleteRecipientRequest } from '~/store/modules/recipients/actions';
+import { deleteCourierRequest } from '~/store/modules/couriers/actions';
 import content from './content';
 
 export default function Deliveries() {
   const dispatch = useDispatch();
   const [screen, setScreen] = useState('DEFAULT');
-  const [recipient, setRecipient] = useState(0);
+  const [courier, setCourier] = useState(0);
 
   const handleEditar = (item) => {
-    setRecipient(item);
+    setCourier(item);
     setScreen('EDIT');
   };
 
@@ -23,7 +23,7 @@ export default function Deliveries() {
     );
 
     if (confirmar) {
-      dispatch(deleteRecipientRequest(index));
+      dispatch(deleteCourierRequest(index));
     }
   };
 
@@ -38,7 +38,7 @@ export default function Deliveries() {
         operation={screen}
         backFunction={() => setScreen('DEFAULT')}
         registerFunction={() => setScreen('REGISTER')}
-        recipientIndex={recipient}
+        courierIndex={courier}
       />
       {screen === 'DEFAULT' && (
         <TableCouriers operations={content} functions={funcoes} />

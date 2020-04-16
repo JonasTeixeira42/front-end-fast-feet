@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { all, takeLatest, put, call } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
@@ -14,66 +15,45 @@ export function* fetchCouriers() {
   }
 }
 
-export function* createRecipient({ payload }) {
-  const { name, rua, numero, complemento, estado, cidade, cep } = payload.data;
+export function* createCourier({ payload }) {
+  const { name, email, avatar_id } = payload.data;
   try {
-    yield call(api.post, 'recipient', {
-      name,
-      rua,
-      numero,
-      complemento,
-      estado,
-      cidade,
-      cep,
-    });
+    yield call(api.post, 'courier', { name, email, avatar_id });
 
     fetchCouriers();
 
-    toast.success('Destinatário cadastrado com sucesso');
+    toast.success('Entregador cadastrado com sucesso');
   } catch (error) {
     toast.error(error.response.data.error);
   }
 }
 
-export function* editRecipient({ payload }) {
-  const {
-    name,
-    rua,
-    numero,
-    complemento,
-    estado,
-    cidade,
-    cep,
-    id,
-  } = payload.data;
+export function* editCourier({ payload }) {
+  const { name, email, avatar_id, id } = payload.data;
 
   try {
-    yield call(api.put, `recipient/${id}`, {
+    yield call(api.put, `courier/${id}`, {
       name: name || undefined,
-      rua: rua || undefined,
-      numero: numero || undefined,
-      complemento: complemento || undefined,
-      estado: estado || undefined,
-      cidade: cidade || undefined,
-      cep: cep || undefined,
+      email: email || undefined,
+      avatar_id: avatar_id || undefined,
     });
 
     fetchCouriers();
 
-    toast.success('Destinatário atualizado com sucesso');
+    toast.success('Entregador atualizado com sucesso');
   } catch (error) {
     toast.error(error.response.data.error);
   }
 }
 
-export function* deleteRecipient({ payload }) {
+export function* deleteCourier({ payload }) {
   const { index } = payload;
   try {
-    const response = yield call(api.delete, `recipient/${index}`);
+    const response = yield call(api.delete, `courier/${index}`);
 
     fetchCouriers();
 
-    toast.success(`Destinatário ${response.data.id} removido com sucesso`);
+    toast.success(`Entregador ${response.data.id} removido com sucesso`);
   } catch (error) {
     toast.error(error.response.data.error);
   }
@@ -81,4 +61,7 @@ export function* deleteRecipient({ payload }) {
 
 export default all([
   takeLatest('@couriers/FETCH_COURIERS_REQUEST', fetchCouriers),
+  takeLatest('@couriers/CREATE_COURIER_REQUEST', createCourier),
+  takeLatest('@couriers/EDIT_COURIER_REQUEST', editCourier),
+  takeLatest('@couriers/DELETE_COURIER_REQUEST', deleteCourier),
 ]);
