@@ -12,6 +12,7 @@ import {
 
 import Icons from '~/utils/icons';
 import headers from './headers';
+import pictureColors from '~/utils/colors';
 
 import * as S from '~/components/TableStyles';
 
@@ -44,7 +45,15 @@ export default function TableCouriers({ operations, functions }) {
           <S.BodyCell length="21.5%">{`#${value.id < 10 ? 0 : ''}${
             value.id
           }`}</S.BodyCell>
-          <S.BodyCell length="21.5%">{value.name}</S.BodyCell>
+          <S.BodyCell length="21.5%">
+            {value.avatar ? (
+              <S.CircleImage src={value.avatar.url} />
+            ) : (
+              <S.CirclePicture color={pictureColors[value.id % 6]}>
+                {value.name.charAt(0).toUpperCase()}
+              </S.CirclePicture>
+            )}
+          </S.BodyCell>
           <S.BodyCell length="21.5%">{value.name}</S.BodyCell>
           <S.BodyCell length="21.5%">{value.email}</S.BodyCell>
           <S.BodyCell length="14%">

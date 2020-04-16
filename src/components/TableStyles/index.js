@@ -156,3 +156,20 @@ export const IconWrapper = styled.span`
   align-items: center;
   margin-right: 6px;
 `;
+export const CirclePicture = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background: ${(props) => props.color};
+  border-radius: 50%;
+  color: ${(props) => darken(0.3, props.color)};
+  font-size: 16px;
+`;
+export const CircleImage = styled.img`
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: '#ccc';
+`;
