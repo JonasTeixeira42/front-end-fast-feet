@@ -46,16 +46,26 @@ export default function CourierForm({
 
   return (
     <S.Wrapper>
-      <S.Header>
-        <S.Title>Gerenciando entregadores</S.Title>
-      </S.Header>
+      {operation === 'DEFAULT' && (
+        <S.Header>
+          <S.Title>
+            {operation === 'EDIT' ? 'Edição de ' : 'Gerenciando'} entregadores
+          </S.Title>
+        </S.Header>
+      )}
       <Form
         initialData={operation === 'EDIT' ? couriers[courierIndex] : {}}
         schema={operation === 'REGISTER' ? schema : undefined}
         onSubmit={handleSubmit}
       >
         <S.NavWrapper>
-          <S.Input placeholder="Buscar por entregadores" />
+          {operation === 'DEFAULT' ? (
+            <S.Input placeholder="Buscar por entregadores" />
+          ) : (
+            <S.Title>
+              {operation === 'EDIT' ? 'Edição de ' : 'Gerenciando'} entregadores
+            </S.Title>
+          )}
           <S.ButtonWrapper>
             {operation !== 'DEFAULT' && (
               <>

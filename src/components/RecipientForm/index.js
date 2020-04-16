@@ -57,15 +57,26 @@ export default function RecipientForm({
 
   return (
     <S.Wrapper>
-      <S.Header>
-        <S.Title>Gerenciando destinatários</S.Title>
-      </S.Header>
+      {operation === 'DEFAULT' && (
+        <S.Header>
+          <S.Title>
+            {operation === 'EDIT' ? 'Edição de ' : 'Gerenciando'} destinatários
+          </S.Title>
+        </S.Header>
+      )}
       <Form
         schema={operation === 'REGISTER' ? schema : undefined}
         onSubmit={handleSubmit}
       >
         <S.NavWrapper>
-          <S.Input placeholder="Buscar por destinatários" />
+          {operation === 'DEFAULT' ? (
+            <S.Input placeholder="Buscar por destinatários" />
+          ) : (
+            <S.Title>
+              {operation === 'EDIT' ? 'Edição de ' : 'Gerenciando'}{' '}
+              destinatários
+            </S.Title>
+          )}
           <S.ButtonWrapper>
             {operation !== 'DEFAULT' && (
               <>

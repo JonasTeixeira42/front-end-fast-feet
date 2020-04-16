@@ -17,7 +17,6 @@ import {
 } from '~/store/modules/deliveries/actions';
 
 export default function RegisterDelivery({
-  title,
   operation,
   backFunction,
   registerFunction,
@@ -80,14 +79,18 @@ export default function RegisterDelivery({
     <>
       {operation === 'DEFAULT' && (
         <S.Header>
-          <S.Title>{title}</S.Title>
+          <S.Title>
+            {operation === 'EDIT' ? 'Edição de ' : 'Gerenciando'} Encomendas
+          </S.Title>
         </S.Header>
       )}
       <S.NavWrapper>
         {operation === 'DEFAULT' ? (
           <S.InputHeader placeholder="Buscar por encomendas" />
         ) : (
-          <S.Title>{title}</S.Title>
+          <S.Title>
+            {operation === 'EDIT' ? 'Edição de ' : 'Gerenciando'} Encomendas
+          </S.Title>
         )}
         <S.ButtonWrapper>
           {operation !== 'DEFAULT' && (
@@ -153,7 +156,6 @@ export default function RegisterDelivery({
 }
 
 RegisterDelivery.propTypes = {
-  title: PropTypes.string.isRequired,
   operation: PropTypes.string,
   backFunction: PropTypes.func.isRequired,
   registerFunction: PropTypes.func.isRequired,

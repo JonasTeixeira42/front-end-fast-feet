@@ -43,7 +43,6 @@ export default function Deliveries() {
   return (
     <>
       <RegisterDelivery
-        title="Gerenciando Encomendas"
         operation={screen}
         backFunction={() => setScreen('DEFAULT')}
         registerFunction={() => setScreen('REGISTER')}
