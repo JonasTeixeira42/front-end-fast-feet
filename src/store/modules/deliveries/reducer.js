@@ -6,6 +6,10 @@ export default function deliveries(state = INITIAL_STATE, action) {
   return produce(state, (draft) => {
     switch (action.type) {
       case '@deliveries/FETCH_DELIVERIES_SUCCESS': {
+        Object.entries(draft).forEach(([key]) => {
+          delete draft[key];
+        });
+
         action.payload.deliveries.forEach((item) => {
           draft[item.id] = { ...item, enabled: false };
         });

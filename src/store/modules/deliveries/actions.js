@@ -4,6 +4,15 @@ export function fetchDeliveriesRequest() {
   };
 }
 
+export function fetchFilteredDelivery(product) {
+  return {
+    type: '@deliveries/FETCH_FILTERED_DELIVERIES_REQUEST',
+    payload: {
+      product,
+    },
+  };
+}
+
 export function fetchDeliveriesSuccess(deliveries) {
   return {
     type: '@deliveries/FETCH_DELIVERIES_SUCCESS',

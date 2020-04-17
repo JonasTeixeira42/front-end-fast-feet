@@ -10,6 +10,18 @@ export function* fetchDeliveries() {
 
     yield put(fetchDeliveriesSuccess(response.data));
   } catch (error) {
+    toast.error(error);
+  }
+}
+export function* fetchFilteredDeliveries({ payload }) {
+  try {
+    const { product } = payload;
+    const response = yield call(api.get, 'delivery-filtered', {
+      params: { product },
+    });
+
+    yield put(fetchDeliveriesSuccess(response.data));
+  } catch (error) {
     toast.error('Erro ao consultar encomendas');
   }
 }
@@ -70,4 +82,8 @@ export default all([
   takeLatest('@deliveries/DELETE_DELIVERY_REQUEST', deleteDelivery),
   takeLatest('@deliveries/CREATE_DELIVERY_REQUEST', createDelivery),
   takeLatest('@deliveries/EDIT_DELIVERY_REQUEST', editDelivery),
+  takeLatest(
+    '@deliveries/FETCH_FILTERED_DELIVERIES_REQUEST',
+    fetchFilteredDeliveries
+  ),
 ]);

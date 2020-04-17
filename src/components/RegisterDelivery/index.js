@@ -14,6 +14,7 @@ import api from '~/services/api';
 import {
   createDeliveryRequest,
   editDeliveryRequest,
+  fetchFilteredDelivery,
 } from '~/store/modules/deliveries/actions';
 
 export default function RegisterDelivery({
@@ -75,6 +76,10 @@ export default function RegisterDelivery({
     );
   };
 
+  const filteredSearch = (e) => {
+    dispatch(fetchFilteredDelivery(e.target.value));
+  };
+
   return (
     <>
       {operation === 'DEFAULT' && (
@@ -86,7 +91,10 @@ export default function RegisterDelivery({
       )}
       <S.NavWrapper>
         {operation === 'DEFAULT' ? (
-          <S.InputHeader placeholder="Buscar por encomendas" />
+          <S.InputHeader
+            placeholder="Buscar por encomendas"
+            onChange={filteredSearch}
+          />
         ) : (
           <S.Title>
             {operation === 'EDIT' ? 'Edição de ' : 'Gerenciando'} Encomendas
