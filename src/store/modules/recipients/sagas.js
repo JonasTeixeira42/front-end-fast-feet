@@ -2,7 +2,7 @@ import { all, takeLatest, put, call } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
 import api from '~/services/api';
-import { fetchRecipientsSuccess, fetchFilteredRecipient } from './actions';
+import { fetchRecipientsSuccess } from './actions';
 
 export function* fetchRecipients() {
   try {
