@@ -4,6 +4,15 @@ export function fetchRecipientsRequest() {
   };
 }
 
+export function fetchFilteredRecipient(name) {
+  return {
+    type: '@recipients/FETCH_FILTERED_RECIPIENTS_REQUEST',
+    payload: {
+      name,
+    },
+  };
+}
+
 export function fetchRecipientsSuccess(recipients) {
   return {
     type: '@recipients/FETCH_RECIPIENTS_SUCCESS',

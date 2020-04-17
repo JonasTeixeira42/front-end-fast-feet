@@ -12,6 +12,7 @@ import { cepMask } from '~/utils/format';
 import {
   createRecipientRequest,
   editRecipientRequest,
+  fetchFilteredRecipient,
 } from '~/store/modules/recipients/actions';
 
 import * as S from './styles';
@@ -55,6 +56,10 @@ export default function RecipientForm({
     setCep(value);
   };
 
+  const filteredSearch = (e) => {
+    dispatch(fetchFilteredRecipient(e.target.value));
+  };
+
   return (
     <S.Wrapper>
       {operation === 'DEFAULT' && (
@@ -70,7 +75,10 @@ export default function RecipientForm({
       >
         <S.NavWrapper>
           {operation === 'DEFAULT' ? (
-            <S.Input placeholder="Buscar por destinatários" />
+            <S.Input
+              placeholder="Buscar por destinatários"
+              onChange={filteredSearch}
+            />
           ) : (
             <S.Title>
               {operation === 'EDIT' ? 'Edição de ' : 'Gerenciando'}{' '}

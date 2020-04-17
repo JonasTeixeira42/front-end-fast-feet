@@ -24,7 +24,7 @@ export function* fetchFilteredCouriers({ payload }) {
 
     yield put(fetchCouriersSuccess(response.data));
   } catch (error) {
-    toast.error('Erro ao consultar encomendas');
+    toast.error('Erro ao consultar entregadores');
   }
 }
 

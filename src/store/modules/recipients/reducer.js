@@ -6,6 +6,10 @@ export default function recipients(state = INITIAL_STATE, action) {
   return produce(state, (draft) => {
     switch (action.type) {
       case '@recipients/FETCH_RECIPIENTS_SUCCESS': {
+        Object.entries(draft).forEach(([key]) => {
+          delete draft[key];
+        });
+
         action.payload.recipients.forEach((item) => {
           draft[item.id] = { ...item, enabled: false };
         });
