@@ -11,6 +11,7 @@ import { Input, Form } from '@rocketseat/unform';
 import {
   createCourierRequest,
   editCourierRequest,
+  fetchFilteredCourier,
 } from '~/store/modules/couriers/actions';
 import Avatar from './AvatarInput';
 
@@ -44,6 +45,10 @@ export default function CourierForm({
     );
   };
 
+  const filteredSearch = (e) => {
+    dispatch(fetchFilteredCourier(e.target.value));
+  };
+
   return (
     <S.Wrapper>
       {operation === 'DEFAULT' && (
@@ -60,7 +65,10 @@ export default function CourierForm({
       >
         <S.NavWrapper>
           {operation === 'DEFAULT' ? (
-            <S.Input placeholder="Buscar por entregadores" />
+            <S.Input
+              placeholder="Buscar por entregadores"
+              onChange={filteredSearch}
+            />
           ) : (
             <S.Title>
               {operation === 'EDIT' ? 'Edição de ' : 'Gerenciando'} entregadores

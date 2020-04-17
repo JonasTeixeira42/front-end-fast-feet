@@ -4,6 +4,15 @@ export function fetchCouriersRequest() {
   };
 }
 
+export function fetchFilteredCourier(name) {
+  return {
+    type: '@couriers/FETCH_FILTERED_COURIERS_REQUEST',
+    payload: {
+      name,
+    },
+  };
+}
+
 export function fetchCouriersSuccess(couriers) {
   return {
     type: '@couriers/FETCH_COURIERS_SUCCESS',

@@ -15,6 +15,19 @@ export function* fetchCouriers() {
   }
 }
 
+export function* fetchFilteredCouriers({ payload }) {
+  try {
+    const { name } = payload;
+    const response = yield call(api.get, 'courier-filtered', {
+      params: { name },
+    });
+
+    yield put(fetchCouriersSuccess(response.data));
+  } catch (error) {
+    toast.error('Erro ao consultar encomendas');
+  }
+}
+
 export function* createCourier({ payload }) {
   const { name, email, avatar_id } = payload.data;
   try {
@@ -64,4 +77,8 @@ export default all([
   takeLatest('@couriers/CREATE_COURIER_REQUEST', createCourier),
   takeLatest('@couriers/EDIT_COURIER_REQUEST', editCourier),
   takeLatest('@couriers/DELETE_COURIER_REQUEST', deleteCourier),
+  takeLatest(
+    '@couriers/FETCH_FILTERED_COURIERS_REQUEST',
+    fetchFilteredCouriers
+  ),
 ]);
