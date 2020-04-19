@@ -166,10 +166,16 @@ export const CirclePicture = styled.div`
   border-radius: 50%;
   color: ${(props) => darken(0.3, props.color)};
   font-size: 16px;
+  margin-right: 5px;
 `;
 export const CircleImage = styled.img`
   width: 35px;
   height: 35px;
   border-radius: 50%;
   background: '#ccc';
+  margin-right: 5px;
+`;
+export const PictureWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;

@@ -15,6 +15,7 @@ import {
 import colorStatus from './colors';
 import Icons from '~/utils/icons';
 import headers from './headers';
+import pictureColors from '~/utils/colors';
 
 export default function TableDelivery({ operations, functions }) {
   const deliveries = useSelector((state) => state.deliveries);
@@ -44,7 +45,18 @@ export default function TableDelivery({ operations, functions }) {
             value.id
           }`}</S.BodyCell>
           <S.BodyCell length="14.27%">{value.recipient.name}</S.BodyCell>
-          <S.BodyCell length="14.27%">{value.courier.name}</S.BodyCell>
+          <S.BodyCell length="14.27%">
+            <S.PictureWrapper>
+              {value.courier.avatar ? (
+                <S.CircleImage src={value.courier.avatar.url} />
+              ) : (
+                <S.CirclePicture color={pictureColors[value.courier.id % 6]}>
+                  {value.courier.name.charAt(0).toUpperCase()}
+                </S.CirclePicture>
+              )}
+              {value.courier.name}
+            </S.PictureWrapper>
+          </S.BodyCell>
           <S.BodyCell length="14.27%">{value.recipient.cidade}</S.BodyCell>
           <S.BodyCell length="14.27%">{value.recipient.estado}</S.BodyCell>
           <S.BodyCell length="14.27%">
